@@ -120,8 +120,6 @@ def EMA_trader(ticker, date=date.today()):
   put_price_past = put_price
   pnl = 0
   stocks = delta * total_investment
-
-  print(f'Look here   {delta}   {stocks/initial_portfolio_value}')
   puts = put_price
 
   transactions= []
