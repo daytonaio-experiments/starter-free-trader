@@ -1,0 +1,30 @@
+{
+    "name": "Python Finance Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2.4.7": {
+            "username": "daytona",
+            "userUid": 1000,
+            "userGid": 1000,
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.pythonPath": "/usr/local/bin/python3"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "remoteUser": "daytona"
+}

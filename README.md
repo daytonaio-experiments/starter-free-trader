@@ -1,12 +1,19 @@
 # starter-free-trader
 
-So far:
-  The portfolio has 6 different stocks, and it alters the weight given to each stock depending on the return or risk wanted by the user
-  Tool to calculate the different derivatives and price the option, as well as give the wieght of options to hedge a stock
+This project came from the idea of wanting to develop a systematic trading program, which autonomously managed a portfolio for its user. 
 
-Next steps: 
-1. I am reading a book on derivatives an options trading to be able to hedge the portfolio and add complexity to the trades
-  1 Given the different options priced above, be able to hedge the portfolio using the different derivatives
-    Should be able to hedge the whole portfolio, not only 1 stock
-2. Devlop a systematic trading algorithm that acts on its own
-  
+The initial project -seen in the PortfolioModel file- was a simple stock selection from a basket of 6 stocks. Inspired by Markowitz's Modern Portfolio Theory, we sought to maximize the return for a given level of risk. By downloading market data from the past 3 years, we calculated the average volatility of each equity, as well as its return on investment (ROI). From this data, we simulate a large number of portfolios, giving different weights to the different equities in each of the portfolios, and reach a portfolio with the maximum Sharpe ratio, meaning that it is optimized for risk versus ROI.
+
+Nevertheless, the problem remained that this wasn't a systematic trading program, as it only interacted with the market at the beginning of the simulation, where it selected the weight each stock should be given, and then held those stocks until the end.
+
+In order to develop a systematic approach, we had to design an algorithm which would interact with the market at several points during the simulation. So the issue arised of when should it make its moves.
+
+We decided to use the popular strategy of Exponential Moving Averages (EMA), which give a decent framework for us to know when a stock's price is moving up or down in price. Basically, we calculate the EMA of the stock price of 2 different time periods -in our case we chose a 20 day period for the small EMA, and a 35 day period for the large EMA. Intuitively, if the stock price is moving up for some time, the small EMA will have a bigger value than the big EMA (simply because the big EMA will also take into account earlier data in which the stock price was lower, given that in this assumption it is going up in price). Similarly, when the big EMA has a bigger value than the small EMA, the stock price will tend to move down. Given that the small and big EMAs will be changing throughout the simulation, we chose the points in which the small EMA and big EMA cross as signals for us to make a trade. Initially, the idea was to buy a fixed amount of stock when the small EMA crossed the big EMA and became bigger in value (and thus the stock price tends to rise), and to sell a fixed amount of stock when the big EMA crossed the small EMA and became bigger in value (and thus the stock price tends to drop).
+
+To add a layer of complexity, we also looked at the use of stock options such as calls and puts in order to hedge the risk of the transactions. Additionally, the use of calls and puts adds the complexity of not only having to calculate their pricing using the Black-Scholes formula, but also to calculate the different derivatives in order to better hedge the portfolio.
+
+For this purpose, we first developped the tools to calculate the pricing of options and their respective derivatives in the files called OptionPricing1 and OptionPricing2.
+
+From here, we sought to implement the tools together with the EMA trading strategy -the code can be found in the EMA_trading_with_Options file. The strategy now changed from only buying/selling stocks to also operating with their options. The 2 operations that we can apply are to buy/sell the stock, and buy/sell put options. For those unfamiliar with the functionality of put options, they are a contract between two parties, in which the buyer of the put option has the possibility but not the obligation of selling the underlying stock at a fixed price on the date of maturity of the option (simply put as an example: I have a stock with a high volatility which trades at $100 per share, and I pay $10 to another trader for a put option in which I have the possibility but not the obligation to sell him my stock at $100 in one year's time. If the stock goes up, I can keep the stock. However, given that the stock has a lot of volatility, if it went down to $80 per share, I can exercise my option to sell it at the aforementioned price of $100, which limits my potential downside on owning the stock). These put options go up in value as the stock drops in price, and go down in value as the stock goes up. As their value moves opposite to the value of the underlying stock, we can use them to hedge our portfolio. Additionally, we can also use them to doubly capitalize on price movements -if we believe a stock will go up, we can sell some of our puts (which will go down in value) to gain cash, and use it to buy more stocks.
+
+Initially, with the EMA strategy we bought and sold a fixed amount of stock at each transaction, but it is also important to note that the option's price doesn't move the same amount if it is in deep In the Money or Out of the Money positions. For this, instead of buying/selling an arbitrary amount of stocks and options at each transaction, we used delta hedging to figure out the amount we should trade in each case.
