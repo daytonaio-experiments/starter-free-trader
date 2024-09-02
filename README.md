@@ -1,4 +1,4 @@
-# starter-free-trader
+# Starter Free Trader
 
 This project came from the idea of wanting to develop a systematic trading program, which autonomously managed a portfolio for its user. 
 
