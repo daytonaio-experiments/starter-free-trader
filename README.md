@@ -27,18 +27,18 @@ From here, we sought to implement the tools together with the EMA trading strate
 Initially, with the EMA strategy we bought and sold a fixed amount of stock at each transaction, but it is also important to note that the option's price doesn't move the same amount if it is in deep In the Money or Out of the Money positions. For this, instead of buying/selling an arbitrary amount of stocks and options at each transaction, we used delta hedging to figure out the amount we should trade in each case.
 
 ## Features
-**Retrieve Historical Data:** Pulls stock data from sources like Yahoo Finance using `yfinance` and `pandas_datareader`.
-**Options Pricing Models:** Implements the Black-Scholes model and other pricing strategies using `py_vollib`.
-**Mathematical Computations:** Leverages `numpy` and `scipy` for numerical operations.
-**Visualization:** Plots the performance of different pricing strategies using `matplotlib`.
+- **Retrieve Historical Data:** Pulls stock data from sources like Yahoo Finance using `yfinance` and `pandas_datareader`.
+- **Options Pricing Models:** Implements the Black-Scholes model and other pricing strategies using `py_vollib`.
+- **Mathematical Computations:** Leverages `numpy` and `scipy` for numerical operations.
+- **Visualization:** Plots the performance of different pricing strategies using `matplotlib`.
 
 ## Libraries and Tools
-**yfinance:** Downloads stock data from Yahoo Finance.
-**numpy:** Provides tools for matrix operations and numerical calculations.
-**matplotlib:** Plots graphs and visualizes pricing strategies.
-**pandas_datareader:** Fetches data from Yahoo Finance and other sources.
-**scipy:** Supports optimization and advanced math functions.
-**py_vollib:** Implements Black-Scholes and other pricing models.
+- **yfinance:** Downloads stock data from Yahoo Finance.
+- **numpy:** Provides tools for matrix operations and numerical calculations.
+- **matplotlib:** Plots graphs and visualizes pricing strategies.
+- **pandas_datareader:** Fetches data from Yahoo Finance and other sources.
+- **scipy:** Supports optimization and advanced math functions.
+- **py_vollib:** Implements Black-Scholes and other pricing models.
 
 ## Setting Up Workspace for the Project with Daytona
 ### Requirements:
