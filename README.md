@@ -69,30 +69,34 @@ daytona code
 
 ```json
 {
-  "name": "Python Option Pricing Environment",
-  "image": "python:3.10",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2.4.7": {
-      "username": "daytona",
-      "userUid": 1000,
-      "userGid": 1000
+    "name": "Python Finance Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
     },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.10"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-toolsai.jupyter",
-        "ms-python.vscode-pylance"
-      ]
-    }
-  },
-  "workspaceFolder": "/workspaces/option-pricing-app",
-  "postCreateCommand": "pip install -r requirements.txt",
-  "remoteUser": "daytona"
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2.4.7": {
+            "username": "daytona",
+            "userUid": 1000,
+            "userGid": 1000,
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.pythonPath": "/usr/local/bin/python3"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "remoteUser": "daytona"
 }
 ```
 This configuration ensures the environment is equipped with Python 3.10, common utilities, and essential VSCode extensions.
