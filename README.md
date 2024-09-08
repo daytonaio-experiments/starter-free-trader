@@ -202,3 +202,6 @@ Daytona is a product produced from this open source software, exclusively by Day
 Others are allowed to make their own distribution of the software, but they cannot use any of the Daytona trademarks, cloud services, etc.
 
 We explicitly grant permission for you to make a build that includes our trademarks while developing Daytona itself. You may not publish or share the build, and you may not use that build to run Daytona for any other purpose.
+
+## Legal disclaimer
+This material has been prepared for informational purposes only, and is not intended to provide, and should not be relied on for, financial tax, legal or accounting advice. You should consult your own financial, tax, legal and accounting advisors before engaging in any transaction.
