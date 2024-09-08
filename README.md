@@ -40,6 +40,19 @@ Initially, with the EMA strategy we bought and sold a fixed amount of stock at e
 - **scipy:** Supports optimization and advanced math functions.
 - **py_vollib:** Implements Black-Scholes and other pricing models.
 
+## Starter Free Trader Results
+ROI on different stocks when backtesting the tradding algorithm over the past year:
+- MSFT: +21.1% (+28.9% stock performance)
+- MCD: +2.3% (-5.0% stock performance)
+- JPM: +32.8% (+39.5% stock performance)
+- AAPL: +24.0% (+22.7% stock performance)
+- GOOGL: +22.8% (+28.3% stock performance)
+- KO: +16.5% (+16.4% stock performance)
+- GRFS: +2.2% (-29.4% stock performance)
+- GS: +35.7% (45.8% stock performance)
+
+- Even though the performance of the algorithm was below the stock's performance in some cases, it has to be noted that this was a specifically bullish year for a lot of stocks. When considering that this trader is designed to hedge the risk of each trade instead of making a directional strategy, it has worked as expected. It is difficult to outperform a stock that increases its price by 39.5% in a single year, as did the stock of JPM, when we are trying to hedge in case there is a downturn. Nevertheless, when looking at stocks that have gone down in price, such as is the case of GRFS or MCD, that have dropped 29.4% and 5.0% respectively, the trader not only did not loose any money, but made small gains of 2.2% in both cases. Given that the objective of the algorithm was not only to maximize the profit, but to also minimize the risk, we can consider the Starter Free Trader algorithm to have been a success.
+
 ## Setting Up Workspace for the Project with Daytona
 ### Requirements:
 
