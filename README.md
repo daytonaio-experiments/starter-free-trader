@@ -52,14 +52,12 @@ Steps to Set Up Daytona Workspace:
 
 ```bash
 daytona create https://github.com/yourusername/option-pricing-app.git
-Select Preferred IDE:
 ```
-
+Select Preferred IDE:
 ```bash
 daytona ide
-Open the Workspace:
 ```
-
+Open the Workspace:
 ```bash
 daytona code
 ```
